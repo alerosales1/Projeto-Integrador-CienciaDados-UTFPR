@@ -1,0 +1,23 @@
+# Dados (não versionar; use src/download_data.py para baixar).
+# Os .gitkeep são mantidos para a estrutura de pastas aparecer no GitHub.
+data/raw/*
+data/bronze/*
+data/silver/*
+data/gold/*
+!data/raw/.gitkeep
+!data/bronze/.gitkeep
+!data/silver/.gitkeep
+!data/gold/.gitkeep
+
+# Python / Jupyter
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Spark
+spark-warehouse/
+metastore_db/
+derby.log
+.DS_Store
