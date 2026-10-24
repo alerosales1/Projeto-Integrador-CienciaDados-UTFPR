@@ -5,6 +5,13 @@ metadados de ingestão (_source_file, _ingested_at).
 
 Uso:  python src/bronze.py
 """
+import os
+import sys
+
+if sys.platform == "win32":
+    os.environ.setdefault("HADOOP_HOME", r"C:\hadoop")
+    os.environ["PATH"] += os.pathsep + r"C:\hadoop\bin"
+
 import re
 
 from pyspark.sql import SparkSession
@@ -34,7 +41,8 @@ def main() -> None:
 
     out = BRONZE_DIR / "metropt3"
     df.write.mode("overwrite").parquet(str(out))
-    print(f"Bronze gravada em {out} | linhas: {df.count()} | colunas: {len(df.columns)}")
+    print(
+        f"Bronze gravada em {out} | linhas: {df.count()} | colunas: {len(df.columns)}")
     spark.stop()
 
 
