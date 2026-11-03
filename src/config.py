@@ -42,7 +42,8 @@ HORIZON_HOURS = 24                      # X em "haverá falha nas próximas X ho
 # valores de X para a análise de sensibilidade
 HORIZON_SENSITIVITY = [6, 12, 24, 48]
 # janelas por TEMPO, em minutos (1 h, 6 h, 24 h)
-ROLLING_WINDOWS_MIN = [60, 360, 1440]
+# 1 h e 6 h (a de 24 h elimina os positivos da falha 4)
+ROLLING_WINDOWS_MIN = [60, 360]
 # fração mínima de minutos presentes na janela
 MIN_WINDOW_COVERAGE = 0.8
 # intervalo de segurança entre treino e teste

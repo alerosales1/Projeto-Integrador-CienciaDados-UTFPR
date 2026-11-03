@@ -3,22 +3,22 @@
   "horizonte_h": 24,
   "linhas_silver": 252382,
   "linhas_removidas_em_falha": 4954,
-  "linhas_removidas_sem_cobertura": 81048,
+  "linhas_removidas_sem_cobertura": 35488,
   "cobertura_minima_janela": 0.8,
   "janelas_min": [
     60,
-    360,
-    1440
+    360
   ],
-  "linhas_gold": 166380,
-  "positivos": 3262,
-  "taxa_positivos": 0.019606,
+  "linhas_gold": 211940,
+  "positivos": 3997,
+  "taxa_positivos": 0.018859,
   "positivos_por_falha": {
     "1": 910,
     "2": 912,
-    "3": 1440
+    "3": 1440,
+    "4": 735
   },
-  "n_features": 88,
+  "n_features": 64,
   "sensores_analogicos": [
     "c0",
     "TP2",
