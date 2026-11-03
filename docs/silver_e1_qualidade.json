@@ -1,0 +1,61 @@
+{
+  "linhas_entrada": 1516948,
+  "apos_deduplicacao": 1516948,
+  "apos_remocao_nulos": 1516948,
+  "apos_faixas_sensores": 1516948,
+  "faixas_aplicadas": {
+    "TP2": [
+      -0.05,
+      11.0
+    ],
+    "TP3": [
+      -0.05,
+      11.0
+    ],
+    "H1": [
+      -0.05,
+      11.0
+    ],
+    "DV_pressure": [
+      -0.05,
+      11.0
+    ],
+    "Reservoirs": [
+      -0.05,
+      11.0
+    ],
+    "Oil_temperature": [
+      0.0,
+      100.0
+    ],
+    "Motor_current": [
+      0.0,
+      10.0
+    ]
+  },
+  "baldes_total": 252720,
+  "baldes_com_cobertura_minima": 252382,
+  "min_leituras_por_balde": 4,
+  "variante": "e1",
+  "analogicos": [
+    "c0",
+    "TP2",
+    "TP3",
+    "H1",
+    "DV_pressure",
+    "Reservoirs",
+    "Oil_temperature",
+    "Motor_current"
+  ],
+  "digitais": [
+    "COMP",
+    "DV_eletric",
+    "Towers",
+    "MPG",
+    "LPS",
+    "Pressure_switch",
+    "Oil_level",
+    "Caudal_impulses"
+  ],
+  "saida": "C:\\workspace\\Projeto-Integrador-CienciaDados-UTFPR\\data\\silver\\e1"
+}

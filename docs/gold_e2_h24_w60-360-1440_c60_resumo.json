@@ -1,0 +1,44 @@
+{
+  "variante": "e2",
+  "horizonte_h": 24,
+  "linhas_silver": 252382,
+  "linhas_removidas_em_falha": 4954,
+  "linhas_removidas_sem_cobertura": 37646,
+  "cobertura_minima_janela": 0.6,
+  "janelas_min": [
+    60,
+    360,
+    1440
+  ],
+  "linhas_gold": 209782,
+  "positivos": 3600,
+  "taxa_positivos": 0.017161,
+  "positivos_por_falha": {
+    "1": 982,
+    "2": 1019,
+    "3": 1440,
+    "4": 159
+  },
+  "n_features": 88,
+  "sensores_analogicos": [
+    "c0",
+    "TP2",
+    "TP3",
+    "H1",
+    "DV_pressure",
+    "Reservoirs",
+    "Oil_temperature",
+    "Motor_current"
+  ],
+  "sensores_digitais": [
+    "COMP",
+    "DV_eletric",
+    "Towers",
+    "MPG",
+    "LPS",
+    "Pressure_switch",
+    "Oil_level",
+    "Caudal_impulses"
+  ],
+  "saida": "C:\\workspace\\Projeto-Integrador-CienciaDados-UTFPR\\data\\gold\\e2_h24_w60-360-1440_c60"
+}

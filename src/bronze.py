@@ -27,7 +27,11 @@ def sanitize(name: str) -> str:
 
 def main() -> None:
     raw = find_raw_csv()
-    spark = SparkSession.builder.appName("metropt3-bronze").getOrCreate()
+    spark = (
+        SparkSession.builder.appName("metropt3-bronze")
+        .config("spark.sql.session.timeZone", "UTC")
+        .getOrCreate()
+    )
 
     df = (
         spark.read.option("header", True)
