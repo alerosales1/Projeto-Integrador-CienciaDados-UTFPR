@@ -186,6 +186,7 @@ def build_gold(
         for r in df.filter("label = 1").groupBy("failure_id_ahead").count().collect()
     }
     log["n_features"] = len(feature_cols)
+    log["features"] = feature_cols
     log["sensores_analogicos"] = analog
     log["sensores_digitais"] = digital
     return df, log

@@ -25,6 +25,7 @@ A base não vem rotulada. As falhas estão no relatório de manutenção da pág
 | Silver | `e0`: 10 s, sem regras de qualidade. `e1`: deduplicação, nulos, faixas dos sensores, baldes de 1 min (média; nos digitais, ciclo de trabalho) e cobertura mínima | `src/silver.py` |
 | Gold | Rótulo de pré-falha com horizonte X, remoção das leituras dentro de falha, features pontuais (`e0`, `e1`) e em janelas por tempo (`e2`) | `src/gold.py` |
 | Divisão | Forward-chaining por falha, com embargo | `src/splits.py` |
+| Avaliação | Métricas por evento: detecção, antecedência e falsos alarmes por dia | `src/evaluation.py` |
 
 Variantes do pipeline: `e0` (10 s, sem qualidade), `e1` (+ Silver) e `e2` (+ janelas por tempo). Balanceamento (E3) e seleção de features (E4) ficam na etapa de modelagem.
 
@@ -61,8 +62,9 @@ python src/gold.py --variant e1
 python src/gold.py --variant e2
 python src/gold.py --variant e2 --all-horizons   # sensibilidade: 6, 12, 24, 48 h
 
-python -m pytest tests            # testes da divisão por falhas
-jupyter notebook notebooks/01_eda_metropt3.ipynb
+python -m pytest tests            # testes da divisão por falhas e das métricas por evento
+jupyter notebook notebooks/01_eda_metropt3.ipynb      # análise exploratória
+jupyter notebook notebooks/02_modelagem_metropt3.ipynb  # modelagem e avaliação por evento
 ```
 
 Cada execução grava um resumo em `docs/` (contagens por etapa de qualidade, taxa de positivos), útil para o artigo.
@@ -77,5 +79,6 @@ O PySpark exige Java instalado (JDK 17 ou superior). No Windows, também é prec
 - [x] Relatório de falhas
 - [x] Silver (e0, e1) e Gold (e0, e1, e2) com rótulos e janelas por tempo
 - [x] Divisão por falhas (forward-chaining)
-- [ ] Modelagem e experimentos E0–E4
+- [x] Notebook de modelagem (E0–E2, avaliação por evento)
+- [ ] E3 (balanceamento), E4 (seleção de features), robustez (P2) e sensibilidade ao horizonte
 - [ ] Artigo

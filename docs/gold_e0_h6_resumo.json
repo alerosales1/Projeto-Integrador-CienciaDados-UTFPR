@@ -1,0 +1,53 @@
+{
+  "variante": "e0",
+  "horizonte_h": 6,
+  "linhas_silver": 1516948,
+  "linhas_removidas_em_falha": 29954,
+  "linhas_gold": 1486994,
+  "positivos": 8327,
+  "taxa_positivos": 0.0056,
+  "positivos_por_falha": {
+    "4": 2179,
+    "3": 2179,
+    "2": 2179,
+    "1": 1790
+  },
+  "n_features": 15,
+  "features": [
+    "TP2",
+    "TP3",
+    "H1",
+    "DV_pressure",
+    "Reservoirs",
+    "Oil_temperature",
+    "Motor_current",
+    "COMP",
+    "DV_eletric",
+    "Towers",
+    "MPG",
+    "LPS",
+    "Pressure_switch",
+    "Oil_level",
+    "Caudal_impulses"
+  ],
+  "sensores_analogicos": [
+    "TP2",
+    "TP3",
+    "H1",
+    "DV_pressure",
+    "Reservoirs",
+    "Oil_temperature",
+    "Motor_current"
+  ],
+  "sensores_digitais": [
+    "COMP",
+    "DV_eletric",
+    "Towers",
+    "MPG",
+    "LPS",
+    "Pressure_switch",
+    "Oil_level",
+    "Caudal_impulses"
+  ],
+  "saida": "C:\\workspace\\Projeto-Integrador-CienciaDados-UTFPR\\data\\gold\\e0_h6"
+}

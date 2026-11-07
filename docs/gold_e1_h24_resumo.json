@@ -12,9 +12,25 @@
     "2": 1234,
     "4": 1022
   },
-  "n_features": 16,
+  "n_features": 15,
+  "features": [
+    "TP2",
+    "TP3",
+    "H1",
+    "DV_pressure",
+    "Reservoirs",
+    "Oil_temperature",
+    "Motor_current",
+    "COMP",
+    "DV_eletric",
+    "Towers",
+    "MPG",
+    "LPS",
+    "Pressure_switch",
+    "Oil_level",
+    "Caudal_impulses"
+  ],
   "sensores_analogicos": [
-    "c0",
     "TP2",
     "TP3",
     "H1",

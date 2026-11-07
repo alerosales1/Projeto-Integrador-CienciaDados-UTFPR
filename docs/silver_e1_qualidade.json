@@ -38,7 +38,6 @@
   "min_leituras_por_balde": 4,
   "variante": "e1",
   "analogicos": [
-    "c0",
     "TP2",
     "TP3",
     "H1",

@@ -1,5 +1,6 @@
 """Utilitários compartilhados de Spark (sessão e colunas)."""
 import os
+import re
 import sys
 
 # No Windows, o Spark precisa do winutils (C:\hadoop\bin). Deve vir ANTES do pyspark.
@@ -23,6 +24,12 @@ def get_spark(app_name: str) -> SparkSession:
     return spark
 
 
+# Colunas que nunca são sensores: índice sem nome do CSV (o Spark o chama de _c0 e o
+# bronze.py o renomeia para c0), "Unnamed: 0" do pandas e colunas de metadados (prefixo "_").
+# O índice cresce com o tempo: usá-lo como feature vazaria a posição temporal.
+IGNORED_COLUMN_PATTERN = re.compile(r"^(c\d+|Unnamed.*|_.*)$")
+
+
 def detect_columns(
     df: DataFrame, time_col: str | None = None
 ) -> tuple[str, list[str], list[str]]:
@@ -38,7 +45,7 @@ def detect_columns(
         if isinstance(f.dataType, NumericType)
         and f.name != time_col
         and f.name != "n_readings"
-        and not f.name.startswith(("Unnamed", "_"))
+        and not IGNORED_COLUMN_PATTERN.match(f.name)
     ]
     from pyspark.sql import functions as F
 
