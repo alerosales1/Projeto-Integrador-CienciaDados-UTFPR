@@ -1,0 +1,148 @@
+{
+  "ambiente": {
+    "so": "Windows-10-10.0.19045-SP0",
+    "python": "3.13.3",
+    "pandas": "2.3.3",
+    "pyspark": "4.2.0",
+    "cpus": 12,
+    "spark_master": "local[*]",
+    "windows_min": [
+      60,
+      360
+    ],
+    "min_window_coverage": 0.8
+  },
+  "disco": {
+    "csv_bruto_mb": 218.300507,
+    "bronze_parquet_mb": 30.972071,
+    "silver_e1_parquet_mb": 8.225923,
+    "bronze_sobre_csv": 0.142
+  },
+  "conferencias": {
+    "silver_1min": {
+      "linhas_saida_spark": 252382,
+      "linhas_saida_pandas": 252382,
+      "iguais": true
+    },
+    "janelas": {
+      "60000 linhas": {
+        "coluna": "TP2_mean_60m",
+        "max_abs_diff": 3.5320461833077132e-12
+      }
+    }
+  },
+  "medicoes": [
+    {
+      "experimento": "B_leitura",
+      "metodo": "pandas read_csv",
+      "linhas": 1516948,
+      "tempo_mediano_s": 2.489,
+      "tempo_min_s": 2.469,
+      "tempo_max_s": 2.617,
+      "repeticoes": 3,
+      "linhas_por_s": 609438
+    },
+    {
+      "experimento": "B_leitura",
+      "metodo": "pandas read_parquet",
+      "linhas": 1516948,
+      "tempo_mediano_s": 0.12,
+      "tempo_min_s": 0.116,
+      "tempo_max_s": 0.148,
+      "repeticoes": 3,
+      "linhas_por_s": 12625809
+    },
+    {
+      "experimento": "B_leitura",
+      "metodo": "Spark csv (inferSchema)",
+      "linhas": 1516948,
+      "tempo_mediano_s": 2.162,
+      "tempo_min_s": 1.806,
+      "tempo_max_s": 3.143,
+      "repeticoes": 3,
+      "linhas_por_s": 701546
+    },
+    {
+      "experimento": "B_leitura",
+      "metodo": "Spark parquet",
+      "linhas": 1516948,
+      "tempo_mediano_s": 0.324,
+      "tempo_min_s": 0.313,
+      "tempo_max_s": 0.489,
+      "repeticoes": 3,
+      "linhas_por_s": 4681041
+    },
+    {
+      "experimento": "C_silver_1min",
+      "metodo": "pandas (leitura + agregação)",
+      "linhas": 1516948,
+      "tempo_mediano_s": 0.577,
+      "tempo_min_s": 0.518,
+      "tempo_max_s": 0.582,
+      "repeticoes": 3,
+      "linhas_por_s": 2629920,
+      "linhas_saida": 252382
+    },
+    {
+      "experimento": "C_silver_1min",
+      "metodo": "Spark (leitura + agregação)",
+      "linhas": 1516948,
+      "tempo_mediano_s": 3.055,
+      "tempo_min_s": 2.863,
+      "tempo_max_s": 3.41,
+      "repeticoes": 3,
+      "linhas_por_s": 496597,
+      "linhas_saida": 252382
+    },
+    {
+      "experimento": "D_janelas",
+      "metodo": "pandas rolling [60000 linhas]",
+      "linhas": 60000,
+      "tempo_mediano_s": 0.122,
+      "tempo_min_s": 0.121,
+      "tempo_max_s": 0.122,
+      "repeticoes": 3,
+      "linhas_por_s": 493812
+    },
+    {
+      "experimento": "D_janelas",
+      "metodo": "Spark somas acumuladas [60000 linhas]",
+      "linhas": 60000,
+      "tempo_mediano_s": 1.99,
+      "tempo_min_s": 1.819,
+      "tempo_max_s": 4.523,
+      "repeticoes": 3,
+      "linhas_por_s": 30149
+    },
+    {
+      "experimento": "D_janelas",
+      "metodo": "Spark rangeBetween [60000 linhas]",
+      "linhas": 60000,
+      "tempo_mediano_s": 31.7,
+      "tempo_min_s": 31.7,
+      "tempo_max_s": 31.7,
+      "repeticoes": 1,
+      "linhas_por_s": 1893
+    },
+    {
+      "experimento": "D_janelas",
+      "metodo": "pandas rolling [252382 linhas (completa)]",
+      "linhas": 252382,
+      "tempo_mediano_s": 0.543,
+      "tempo_min_s": 0.516,
+      "tempo_max_s": 0.576,
+      "repeticoes": 3,
+      "linhas_por_s": 464695
+    },
+    {
+      "experimento": "D_janelas",
+      "metodo": "Spark somas acumuladas [252382 linhas (completa)]",
+      "linhas": 252382,
+      "tempo_mediano_s": 4.234,
+      "tempo_min_s": 4.021,
+      "tempo_max_s": 4.574,
+      "repeticoes": 3,
+      "linhas_por_s": 59612
+    }
+  ]
+}

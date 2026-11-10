@@ -1,0 +1,11 @@
+variante,modelo,pr_auc,lift,eventos_detectados,eventos_sustentados,recall_medio,atraso_mediano_h,falsos_alarmes_por_dia,frac_minutos_normais_em_alarme
+E2-A,IsolationForest,0.784,22.637,0,0,0.0,,0.0,0.0
+E2,IsolationForest,0.725,20.955,1,0,0.0,5.833,0.0,0.0
+E2-A,Mahalanobis,0.608,17.569,3,3,0.528,3.967,0.022,0.013
+E1-A,IsolationForest,0.58,16.754,3,2,0.49,0.333,0.335,0.015
+E0,IsolationForest,0.55,15.874,4,3,0.404,1.592,0.034,0.015
+E1-A,Mahalanobis,0.526,15.181,1,1,0.151,0.0,0.168,0.009
+E1,IsolationForest,0.354,10.221,3,0,0.019,0.733,2.984,0.004
+E1,Mahalanobis,0.284,8.203,1,0,0.0,0.083,0.246,0.02
+E2,Mahalanobis,0.27,7.789,4,4,0.628,3.233,0.156,0.084
+E0,Mahalanobis,0.069,1.983,1,0,0.0,0.083,0.089,0.02

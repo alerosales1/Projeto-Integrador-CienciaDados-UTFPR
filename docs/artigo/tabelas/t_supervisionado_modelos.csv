@@ -1,0 +1,16 @@
+variante,modelo,PR-AUC falha 2,PR-AUC falha 3,PR-AUC falha 4
+E0,LightGBM,0.933,0.957,0.527
+E0,LogReg,0.089,0.913,0.826
+E0,RandomForest,0.934,0.972,0.834
+E1,LightGBM,0.141,0.949,0.316
+E1,LogReg,0.086,0.939,0.571
+E1,RandomForest,0.905,0.984,0.703
+E2,LightGBM,0.128,0.996,0.338
+E2,LogReg,0.09,0.983,0.011
+E2,RandomForest,0.102,0.985,0.484
+E3,LightGBM,0.105,0.97,0.041
+E3,LogReg,0.08,0.847,0.067
+E3,RandomForest,0.245,0.976,0.231
+E4*,LightGBM,0.568,0.986,0.018
+E4*,LogReg,0.087,0.972,0.026
+E4*,RandomForest,0.2,0.966,0.067

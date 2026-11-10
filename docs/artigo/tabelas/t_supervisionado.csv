@@ -1,0 +1,6 @@
+variante,PR-AUC falha 2,PR-AUC falha 3,PR-AUC falha 4,detecções_sustentadas,combinações,falsos_alarmes_por_dia
+E0,0.652,0.947,0.729,8.0,9,1.263
+E1,0.377,0.957,0.53,7.0,9,0.962
+E2,0.107,0.988,0.278,6.0,9,0.387
+E3,0.143,0.931,0.113,5.0,9,0.494
+E4*,0.285,0.974,0.037,5.0,9,0.954
