@@ -248,6 +248,55 @@ def custos(docs: Path, out: Path) -> None:
     savefig(fig, out, "f6_custos")
 
 
+# --------------------------------------------------------------------------- pipeline e tempos
+def pipeline_diagram(docs: Path, out: Path) -> None:
+    from matplotlib.patches import FancyBboxPatch
+
+    fig, ax = plt.subplots(figsize=(6.5, 2.9))
+    ax.set_xlim(0, 100); ax.set_ylim(0, 40); ax.axis("off")
+
+    def box(x, y, w, h, text, color):
+        ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle="round,pad=0.4", fc=color, ec="0.3", lw=0.8))
+        ax.text(x + w / 2, y + h / 2, text, ha="center", va="center", fontsize=6.5)
+
+    def arrow(x1, y1, x2, y2):
+        ax.annotate("", xy=(x2, y2), xytext=(x1, y1), arrowprops=dict(arrowstyle="->", lw=0.9, color="0.25"))
+
+    box(1, 17, 15, 8, "CSV bruto\n218 MB\n(10 s)", "#eeeeee")
+    box(21, 17, 15, 8, "Bronze\nParquet 31 MB\n(sem alterar)", "#e8c9a0")
+    box(41, 26, 17, 9, "Silver E0\n10 s, sem regras", "#d9d9d9")
+    box(41, 5, 17, 9, "Silver E1\n1 min, qualidade\ne cobertura", "#c0c0c8")
+    box(63, 17, 15, 8, "Gold\nrótulos +\njanelas 1 h/6 h", "#f2d98a")
+    box(63, 33, 15, 5, "Relatório de falhas", "#f4f4f4")
+    box(83, 26, 16, 9, "Supervisionado\nE0–E4", "#b8d8b8")
+    box(83, 5, 16, 9, "Sem rótulos\nIF e Mahalanobis", "#b8d0e8")
+    arrow(16.5, 21, 20.5, 21); arrow(36.5, 22, 40.5, 29); arrow(36.5, 20, 40.5, 11)
+    arrow(58.5, 29, 62.5, 23); arrow(58.5, 11, 62.5, 19); arrow(70.5, 32.5, 70.5, 25.6)
+    arrow(78.5, 23, 82.5, 29); arrow(58.5, 8.5, 82.5, 8.5)
+    savefig(fig, out, "f0_pipeline")
+
+
+def tempos(docs: Path, out: Path) -> None:
+    ex = read(docs, "tempos_execucao.csv")
+    if ex is not None:
+        ex = ex[ex["passo"] != "TOTAL"].drop_duplicates("passo", keep="last")
+        t = ex[["passo", "descricao", "duracao_s", "status"]].copy()
+        total = pd.DataFrame([{"passo": "TOTAL", "descricao": "soma das etapas", "duracao_s": t["duracao_s"].sum(), "status": ""}])
+        add_table("t_tempos_execucao", pd.concat([t, total], ignore_index=True),
+                  "Tempo de parede de cada etapa em uma execução limpa (depende do hardware; ver ambiente_execucao.json).")
+    md = read(docs, "tempos_modelos.csv")
+    if md is not None and len(md):
+        g = (md.groupby(["estimador", "metodo"])
+               .agg(chamadas=("segundos", "size"), total_s=("segundos", "sum"), mediana_s=("segundos", "median"))
+               .reset_index().sort_values("total_s", ascending=False))
+        add_table("t_tempos_modelos", g, "Tempo acumulado de treino (fit) e predição por tipo de modelo, somando todos os notebooks.")
+        fit = g[g["metodo"] == "fit"].sort_values("total_s")
+        fig, ax = plt.subplots(figsize=FIGSIZE)
+        ax.barh(fit["estimador"], fit["total_s"], color="tab:purple")
+        ax.set_xlabel("Tempo total de treino (s)"); ax.set_title("Custo de treino por modelo (todas as dobras e configurações)", fontsize=9)
+        savefig(fig, out, "f7_tempos_treino")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--docs", default="docs")
@@ -256,7 +305,7 @@ def main() -> None:
     docs, out = Path(args.docs), Path(args.out)
     (out / "tabelas").mkdir(parents=True, exist_ok=True)
 
-    for fn in (prognostico, supervisionado, sem_rotulos, p2, custos):
+    for fn in (pipeline_diagram, prognostico, supervisionado, sem_rotulos, p2, custos, tempos):
         print(fn.__name__)
         fn(docs, out)
 

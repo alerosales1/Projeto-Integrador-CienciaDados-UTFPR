@@ -36,113 +36,113 @@
       "experimento": "B_leitura",
       "metodo": "pandas read_csv",
       "linhas": 1516948,
-      "tempo_mediano_s": 2.489,
-      "tempo_min_s": 2.469,
-      "tempo_max_s": 2.617,
+      "tempo_mediano_s": 2.603,
+      "tempo_min_s": 2.588,
+      "tempo_max_s": 2.649,
       "repeticoes": 3,
-      "linhas_por_s": 609438
+      "linhas_por_s": 582733
     },
     {
       "experimento": "B_leitura",
       "metodo": "pandas read_parquet",
       "linhas": 1516948,
-      "tempo_mediano_s": 0.12,
-      "tempo_min_s": 0.116,
-      "tempo_max_s": 0.148,
+      "tempo_mediano_s": 0.127,
+      "tempo_min_s": 0.117,
+      "tempo_max_s": 0.15,
       "repeticoes": 3,
-      "linhas_por_s": 12625809
+      "linhas_por_s": 11916782
     },
     {
       "experimento": "B_leitura",
       "metodo": "Spark csv (inferSchema)",
       "linhas": 1516948,
-      "tempo_mediano_s": 2.162,
-      "tempo_min_s": 1.806,
-      "tempo_max_s": 3.143,
+      "tempo_mediano_s": 1.966,
+      "tempo_min_s": 1.877,
+      "tempo_max_s": 3.041,
       "repeticoes": 3,
-      "linhas_por_s": 701546
+      "linhas_por_s": 771719
     },
     {
       "experimento": "B_leitura",
       "metodo": "Spark parquet",
       "linhas": 1516948,
-      "tempo_mediano_s": 0.324,
-      "tempo_min_s": 0.313,
-      "tempo_max_s": 0.489,
+      "tempo_mediano_s": 0.281,
+      "tempo_min_s": 0.247,
+      "tempo_max_s": 0.456,
       "repeticoes": 3,
-      "linhas_por_s": 4681041
+      "linhas_por_s": 5390070
     },
     {
       "experimento": "C_silver_1min",
       "metodo": "pandas (leitura + agregação)",
       "linhas": 1516948,
-      "tempo_mediano_s": 0.577,
-      "tempo_min_s": 0.518,
-      "tempo_max_s": 0.582,
+      "tempo_mediano_s": 0.578,
+      "tempo_min_s": 0.575,
+      "tempo_max_s": 0.961,
       "repeticoes": 3,
-      "linhas_por_s": 2629920,
+      "linhas_por_s": 2626022,
       "linhas_saida": 252382
     },
     {
       "experimento": "C_silver_1min",
       "metodo": "Spark (leitura + agregação)",
       "linhas": 1516948,
-      "tempo_mediano_s": 3.055,
-      "tempo_min_s": 2.863,
-      "tempo_max_s": 3.41,
+      "tempo_mediano_s": 3.103,
+      "tempo_min_s": 3.014,
+      "tempo_max_s": 3.164,
       "repeticoes": 3,
-      "linhas_por_s": 496597,
+      "linhas_por_s": 488837,
       "linhas_saida": 252382
     },
     {
       "experimento": "D_janelas",
       "metodo": "pandas rolling [60000 linhas]",
       "linhas": 60000,
-      "tempo_mediano_s": 0.122,
-      "tempo_min_s": 0.121,
-      "tempo_max_s": 0.122,
+      "tempo_mediano_s": 0.13,
+      "tempo_min_s": 0.125,
+      "tempo_max_s": 0.131,
       "repeticoes": 3,
-      "linhas_por_s": 493812
+      "linhas_por_s": 462835
     },
     {
       "experimento": "D_janelas",
       "metodo": "Spark somas acumuladas [60000 linhas]",
       "linhas": 60000,
-      "tempo_mediano_s": 1.99,
-      "tempo_min_s": 1.819,
-      "tempo_max_s": 4.523,
+      "tempo_mediano_s": 2.172,
+      "tempo_min_s": 1.884,
+      "tempo_max_s": 5.338,
       "repeticoes": 3,
-      "linhas_por_s": 30149
+      "linhas_por_s": 27628
     },
     {
       "experimento": "D_janelas",
       "metodo": "Spark rangeBetween [60000 linhas]",
       "linhas": 60000,
-      "tempo_mediano_s": 31.7,
-      "tempo_min_s": 31.7,
-      "tempo_max_s": 31.7,
+      "tempo_mediano_s": 26.358,
+      "tempo_min_s": 26.358,
+      "tempo_max_s": 26.358,
       "repeticoes": 1,
-      "linhas_por_s": 1893
+      "linhas_por_s": 2276
     },
     {
       "experimento": "D_janelas",
       "metodo": "pandas rolling [252382 linhas (completa)]",
       "linhas": 252382,
-      "tempo_mediano_s": 0.543,
-      "tempo_min_s": 0.516,
-      "tempo_max_s": 0.576,
+      "tempo_mediano_s": 0.572,
+      "tempo_min_s": 0.538,
+      "tempo_max_s": 0.595,
       "repeticoes": 3,
-      "linhas_por_s": 464695
+      "linhas_por_s": 441410
     },
     {
       "experimento": "D_janelas",
       "metodo": "Spark somas acumuladas [252382 linhas (completa)]",
       "linhas": 252382,
-      "tempo_mediano_s": 4.234,
-      "tempo_min_s": 4.021,
-      "tempo_max_s": 4.574,
+      "tempo_mediano_s": 4.634,
+      "tempo_min_s": 4.494,
+      "tempo_max_s": 5.018,
       "repeticoes": 3,
-      "linhas_por_s": 59612
+      "linhas_por_s": 54465
     }
   ]
 }

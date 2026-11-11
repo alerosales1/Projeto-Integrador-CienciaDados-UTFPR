@@ -93,3 +93,11 @@ def circular_shift_null(
             )
         )
     return pd.DataFrame(rows, columns=["pr_auc", "detected"])
+
+
+try:  # medição de tempos opt-in (PI_FIT_TIMING=1); sem efeito caso contrário
+    import timing as _timing
+
+    _timing.install()
+except Exception:  # pragma: no cover
+    pass

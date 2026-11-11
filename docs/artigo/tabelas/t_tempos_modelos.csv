@@ -1,0 +1,11 @@
+estimador,metodo,chamadas,total_s,mediana_s
+RandomForestClassifier,fit,24,163.8883,4.077999999999999
+IsolationForest,score_samples,70,53.764,0.7416
+LGBMClassifier,fit,25,37.827600000000004,1.3301
+LogisticRegression,fit,24,36.6507,1.28975
+IsolationForest,fit,35,15.9723,0.438
+LGBMClassifier,predict_proba,48,8.4476,0.16875
+RandomForestClassifier,predict_proba,48,5.7291,0.10255
+LedoitWolf,mahalanobis,102,4.4914,0.016149999999999998
+LedoitWolf,fit,51,1.3771,0.0296
+LogisticRegression,predict_proba,48,0.2193,0.00345

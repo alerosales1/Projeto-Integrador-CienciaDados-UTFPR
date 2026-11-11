@@ -1,0 +1,16 @@
+{
+  "data": "2026-11-11T16:49:58",
+  "so": "Windows-10-10.0.19045-SP0",
+  "python": "3.13.3",
+  "cpus": 12,
+  "pandas": "2.3.3",
+  "numpy": "2.5.4",
+  "sklearn": "1.9.1",
+  "lightgbm": "4.7.0",
+  "pyspark": "4.2.0",
+  "java": "openjdk version \"17.0.20.1\" 2026-08-18",
+  "fast": false,
+  "horizontes": [
+    24
+  ]
+}

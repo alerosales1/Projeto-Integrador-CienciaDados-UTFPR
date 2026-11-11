@@ -9,7 +9,7 @@ Prognóstico (E0–E2, 3 modelos, 3 falhas de teste): resultados por horizonte c
 | 2.000 | 27.000 | 8.000 | 1.000 | 0.070 | 3.974 | 10.000 | 6.170 |
 | 6.000 | 27.000 | 3.000 | 0.000 | 0.125 | 1.550 | 6.000 | 9.845 |
 | 12.000 | 27.000 | 6.000 | 0.000 | 0.110 | 1.909 | 4.000 | 10.265 |
-| 24.000 | 27.000 | 7.000 | 0.000 | 0.100 | 6.377 | 7.000 | 12.640 |
+| 24.000 | 27.000 | 7.000 | 0.000 | 0.100 | 6.377 | 7.000 | 12.705 |
 
 ## t_supervisionado
 
@@ -132,14 +132,52 @@ P3: tempo mediano por etapa e método (depende do hardware; ver custos_p3.json).
 
 | experimento | metodo | linhas | tempo_mediano_s | linhas_por_s | vezes_o_mais_rápido |
 |---|---|---|---|---|---|
-| B_leitura | pandas read_csv | 1516948 | 2.489 | 609438 | 20.700 |
-| B_leitura | pandas read_parquet | 1516948 | 0.120 | 12625809 | 1.000 |
-| B_leitura | Spark csv (inferSchema) | 1516948 | 2.162 | 701546 | 18.000 |
-| B_leitura | Spark parquet | 1516948 | 0.324 | 4681041 | 2.700 |
-| C_silver_1min | pandas (leitura + agregação) | 1516948 | 0.577 | 2629920 | 1.000 |
-| C_silver_1min | Spark (leitura + agregação) | 1516948 | 3.055 | 496597 | 5.300 |
-| D_janelas | pandas rolling [60000 linhas] | 60000 | 0.122 | 493812 | 1.000 |
-| D_janelas | Spark somas acumuladas [60000 linhas] | 60000 | 1.990 | 30149 | 16.300 |
-| D_janelas | Spark rangeBetween [60000 linhas] | 60000 | 31.700 | 1893 | 259.800 |
-| D_janelas | pandas rolling [252382 linhas (completa)] | 252382 | 0.543 | 464695 | 1.000 |
-| D_janelas | Spark somas acumuladas [252382 linhas (completa)] | 252382 | 4.234 | 59612 | 7.800 |
+| B_leitura | pandas read_csv | 1516948 | 2.603 | 582733 | 20.500 |
+| B_leitura | pandas read_parquet | 1516948 | 0.127 | 11916782 | 1.000 |
+| B_leitura | Spark csv (inferSchema) | 1516948 | 1.966 | 771719 | 15.500 |
+| B_leitura | Spark parquet | 1516948 | 0.281 | 5390070 | 2.200 |
+| C_silver_1min | pandas (leitura + agregação) | 1516948 | 0.578 | 2626022 | 1.000 |
+| C_silver_1min | Spark (leitura + agregação) | 1516948 | 3.103 | 488837 | 5.400 |
+| D_janelas | pandas rolling [60000 linhas] | 60000 | 0.130 | 462835 | 1.000 |
+| D_janelas | Spark somas acumuladas [60000 linhas] | 60000 | 2.172 | 27628 | 16.700 |
+| D_janelas | Spark rangeBetween [60000 linhas] | 60000 | 26.358 | 2276 | 202.800 |
+| D_janelas | pandas rolling [252382 linhas (completa)] | 252382 | 0.572 | 441410 | 1.000 |
+| D_janelas | Spark somas acumuladas [252382 linhas (completa)] | 252382 | 4.634 | 54465 | 8.100 |
+
+## t_tempos_execucao
+
+Tempo de parede de cada etapa em uma execução limpa (depende do hardware; ver ambiente_execucao.json).
+
+| passo | descricao | duracao_s | status |
+|---|---|---|---|
+| bronze | CSV -> Bronze (Parquet) | 24.900 | ok |
+| silver_e0 | Silver E0 (10 s, sem regras) | 15.400 | ok |
+| silver_e1 | Silver E1 (1 min, qualidade) | 30.900 | ok |
+| gold_e0_h24 | Gold E0, horizonte 24 h | 17.300 | ok |
+| gold_e1_h24 | Gold E1, horizonte 24 h | 14.200 | ok |
+| gold_e2_h24 | Gold E2 (janelas do config.py), horizonte 24 h | 23.900 | ok |
+| tests | Testes automatizados | 4.800 | ok |
+| nb01 | Notebook 01 (EDA) | 15.300 | ok |
+| nb02_h24 | Notebook 02 (prognóstico), horizonte 24 h | 128.300 | ok |
+| nb03 | Notebook 03 (supervisionado E0–E4) | 227.500 | ok |
+| nb04 | Notebook 04 (sem rótulos) | 106.300 | ok |
+| nb05 | Notebook 05 (P2 degradação) | 71.200 | ok |
+| custos | Benchmark de custos (P3) | 104.000 | ok |
+| TOTAL | soma das etapas | 784.000 |  |
+
+## t_tempos_modelos
+
+Tempo acumulado de treino (fit) e predição por tipo de modelo, somando todos os notebooks.
+
+| estimador | metodo | chamadas | total_s | mediana_s |
+|---|---|---|---|---|
+| RandomForestClassifier | fit | 24 | 163.888 | 4.078 |
+| IsolationForest | score_samples | 70 | 53.764 | 0.742 |
+| LGBMClassifier | fit | 25 | 37.828 | 1.330 |
+| LogisticRegression | fit | 24 | 36.651 | 1.290 |
+| IsolationForest | fit | 35 | 15.972 | 0.438 |
+| LGBMClassifier | predict_proba | 48 | 8.448 | 0.169 |
+| RandomForestClassifier | predict_proba | 48 | 5.729 | 0.103 |
+| LedoitWolf | mahalanobis | 102 | 4.491 | 0.016 |
+| LedoitWolf | fit | 51 | 1.377 | 0.030 |
+| LogisticRegression | predict_proba | 48 | 0.219 | 0.003 |

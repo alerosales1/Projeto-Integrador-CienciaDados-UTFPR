@@ -1,12 +1,12 @@
 experimento,metodo,linhas,tempo_mediano_s,linhas_por_s,vezes_o_mais_rápido
-B_leitura,pandas read_csv,1516948,2.489,609438,20.7
-B_leitura,pandas read_parquet,1516948,0.12,12625809,1.0
-B_leitura,Spark csv (inferSchema),1516948,2.162,701546,18.0
-B_leitura,Spark parquet,1516948,0.324,4681041,2.7
-C_silver_1min,pandas (leitura + agregação),1516948,0.577,2629920,1.0
-C_silver_1min,Spark (leitura + agregação),1516948,3.055,496597,5.3
-D_janelas,pandas rolling [60000 linhas],60000,0.122,493812,1.0
-D_janelas,Spark somas acumuladas [60000 linhas],60000,1.99,30149,16.3
-D_janelas,Spark rangeBetween [60000 linhas],60000,31.7,1893,259.8
-D_janelas,pandas rolling [252382 linhas (completa)],252382,0.543,464695,1.0
-D_janelas,Spark somas acumuladas [252382 linhas (completa)],252382,4.234,59612,7.8
+B_leitura,pandas read_csv,1516948,2.603,582733,20.5
+B_leitura,pandas read_parquet,1516948,0.127,11916782,1.0
+B_leitura,Spark csv (inferSchema),1516948,1.966,771719,15.5
+B_leitura,Spark parquet,1516948,0.281,5390070,2.2
+C_silver_1min,pandas (leitura + agregação),1516948,0.578,2626022,1.0
+C_silver_1min,Spark (leitura + agregação),1516948,3.103,488837,5.4
+D_janelas,pandas rolling [60000 linhas],60000,0.13,462835,1.0
+D_janelas,Spark somas acumuladas [60000 linhas],60000,2.172,27628,16.7
+D_janelas,Spark rangeBetween [60000 linhas],60000,26.358,2276,202.8
+D_janelas,pandas rolling [252382 linhas (completa)],252382,0.572,441410,1.0
+D_janelas,Spark somas acumuladas [252382 linhas (completa)],252382,4.634,54465,8.1
