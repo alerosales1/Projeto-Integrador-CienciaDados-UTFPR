@@ -8,3 +8,6 @@ xgboost>=2.0
 lightgbm>=4.0
 ucimlrepo>=0.0.7
 pytest>=8.0
+nbclient>=0.10
+nbformat>=5.9
+ipykernel>=6.29
