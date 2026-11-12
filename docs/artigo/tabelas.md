@@ -163,7 +163,8 @@ Tempo de parede de cada etapa em uma execução limpa (depende do hardware; ver 
 | nb04 | Notebook 04 (sem rótulos) | 106.300 | ok |
 | nb05 | Notebook 05 (P2 degradação) | 71.200 | ok |
 | custos | Benchmark de custos (P3) | 104.000 | ok |
-| TOTAL | soma das etapas | 784.000 |  |
+| assets | Tabelas e figuras do artigo | 3.400 | ok |
+| TOTAL | soma das etapas | 787.400 |  |
 
 ## t_tempos_modelos
 
